@@ -1,8 +1,12 @@
 import pandas as pd
 from pathlib import Path
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP("buscador_livros")
 
 base_livros = Path(__file__).parent / "GoodReads_100k_books.csv"
 
+@mcp.tool
 def buscador(genero: str, num_pag: int, csv_path=base_livros):
     """
         descricao: 
@@ -42,4 +46,4 @@ def buscador(genero: str, num_pag: int, csv_path=base_livros):
     return resultado
 
 if __name__ == '__main__':
-    print(buscador('romance', 250))
+    mcp.run(transport='stdio')
