@@ -18,6 +18,13 @@ client = MultiServerMCPClient({
         "command": "python",
         "args": [str(buscador_path)],
         "transport": "stdio"
+    },
+    "apify": {
+        "transport": "sse",
+        "url": "https://mcp.apify.com/sse?actors=runtime/goodreads-book-scraper",
+        "headers": {
+            "Authorization": f"Bearer {os.getenv('APIFY_API_KEY')}",
+        }
     }
 })
 
@@ -35,6 +42,8 @@ async def chat():
         "Conside livros curtos os livros que tem no máximo 130 páginas." \
         "Considere livros longos os livros que tem mais de 400 páginas." \
         "Na hora de responder escolha os 5 melhores livros baseados nas avaliações dos usuários."\
+        "Para encontrar informações de um livro específico, passe o nome em inglês, do jeito que o usuário escreveu e com codificação UTF-8 para a tool de buscar por nome." \
+        "Se o usuário pesquisar livros com algum termo específico, use a ferramenta do goodreads-book-scraper do apify e passe o search term em inglês." 
     )
 
     print("O que você quer ler hoje? Use /q para sair.\n")
