@@ -13,7 +13,9 @@ Criar um buscador inteligente de livros capaz de interpretar comandos como:
 “Me dê mais informações sobre tal livro!”
 
 E retornar resultados relevantes usando IA e o protocolo MCP.
+
 ## ⚒️ Etapas
+
 1. Filtragem Inteligente de Livros – Carol Silva (Neuralmed)
 Explicação sobre o dataset utilizado.
 
@@ -55,6 +57,7 @@ Implementação de memória para:
 Permitir ao buscador responder com base em perguntas anteriores.
 
 Resolução de erros e ajustes no processo.
+
 ## 💻 Stack utilizada
 
 Python
@@ -65,6 +68,27 @@ MCP (Model Context Protocol)
 
 LangGraph
 
+## 📋 Pré-requisitos e Configurações
+
+### 1. Baixar o arquivo do GoodReads
+Baixar o csv no link: [Kaggle - GoodReads 100k books](https://www.kaggle.com/datasets/mdhamani/goodreads-books-100k/data)
+
+### 2. Conta OpenAI e Chave API
+
+Para utilizar o sistema de chat com IA, você precisará de uma chave da OpenAI.
+
+### 3. Conta Apify (Opcional)
+
+Para acessar dados atualizados do Goodreads, você pode criar uma conta gratuita na Apify.
+
+### 4. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+
+```env
+OPENAI_API_KEY=sua_chave_openai_aqui
+APIFY_API_KEY=sua_chave_apify_aqui_opcional
+```
 
 
 ## 🏷️ Etiquetas
