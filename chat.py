@@ -34,19 +34,29 @@ async def chat():
         "Você pode usar tools para buscar informações sobre livros. Lembre-se de traduzir o gênero do livro para o inglês antes de fazer a busca na tool." \
         "Conside livros curtos os livros que tem no máximo 130 páginas." \
         "Considere livros longos os livros que tem mais de 400 páginas." \
-        "Na hora de responder escolha os 5 melhores livros baseados nas avaliações dos usuários."
+        "Na hora de responder escolha os 5 melhores livros baseados nas avaliações dos usuários."\
     )
 
-    print("O que você quer ler hoje?")
+    print("O que você quer ler hoje? Use /q para sair.\n")
 
     while True:
         user_input = input("> ")
 
+        if user_input.lower() == "/q":
+            print("Saindo...")
+            break
+        
+        config = {
+            "configurable": {
+                "thread_id": "1"
+            }
+        }
+        
         response = await agent.ainvoke(
-            {"messages": [{"role": "user", "content": user_input}]}
+            {"messages": [{"role": "user", "content": user_input}]}, config=config
         )
 
-        print(response)
+        print(response["messages"][-1].content)
 
 if __name__ == "__main__":
     asyncio.run(chat())
